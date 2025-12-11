@@ -2,8 +2,16 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>鯊魚家庭協作備忘錄</title>
+    
+    <!-- 📱 iPhone Web App 專屬設定 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="鯊魚備忘錄">
+    <!-- 如果你有圖示，可以上傳 icon.png 到 GitHub 並將 href 改為 "icon.png" -->
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2622/2622144.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -17,12 +25,12 @@
 
         // 🔴🔴🔴 請把這裡換成你剛剛在 Firebase 複製的設定 🔴🔴🔴
         const firebaseConfig = {
-           apiKey: "AIzaSyC2dr6HshQLNIDvu1zi4_teha9fh4AJF7M",
-           authDomain: "shark-memo.firebaseapp.com",
-           projectId: "shark-memo",
-           storageBucket: "shark-memo.firebasestorage.app",
-           messagingSenderId: "235326209584",
-           appId: "1:235326209584:web:6ded68d8886e7906a777f5"
+            apiKey: "AIzaSyC2dr6HshQLNIDvu1zi4_teha9fh4AJF7M",
+            authDomain: "shark-memo.firebaseapp.com",
+            projectId: "shark-memo",
+            storageBucket: "shark-memo.firebasestorage.app",
+            messagingSenderId: "235326209584",
+            appId: "1:235326209584:web:6ded68d8886e7906a777f5"
 
         };
         // 🔴🔴🔴 設定結束 🔴🔴🔴
@@ -44,7 +52,16 @@
     </script>
     
     <style>
-        body { font-family: 'Zen Maru Gothic', sans-serif; background-color: #f0f9ff; overflow: hidden; transition: background-color 0.5s; }
+        /* 禁止選取文字，讓質感更像 App */
+        body { 
+            font-family: 'Zen Maru Gothic', sans-serif; 
+            background-color: #f0f9ff; 
+            overflow: hidden; 
+            transition: background-color 0.5s;
+            user-select: none; 
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
         body.mom-theme { background-color: #fff0f5; }
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
         .shark-float { animation: float 5s ease-in-out infinite; }
@@ -56,6 +73,9 @@
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
         .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
         .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        
+        /* 避免 iOS 輸入框放大 */
+        input { font-size: 16px !important; }
     </style>
 </head>
 <body class="h-screen w-full flex items-center justify-center relative text-gray-700">
